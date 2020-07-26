@@ -30,7 +30,7 @@ class SplashScreen extends  React.Component{
                <View style={{flexDirection:'column'}}>
                     
                     <Image
-                        style={{ height: wp('50'), width: hp('52'), marginTop: hp('25'), marginLeft: wp('9') }}
+                        style={{ height: hp('35%'), width: wp('60%'), marginTop: hp('25%'), marginLeft: wp('20%') }}
                         source={require('../Photo/vaarta1.png')}
                     ></Image>
                      
@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
     liner: {
         flex:1,
         flexDirection:'row',
-        height: wp(100),
-        width: hp(100),
+        height: hp('100%'),
+        width: wp('100%'),
          backgroundColor:'#001a33'
     }
 

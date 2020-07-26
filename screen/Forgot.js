@@ -3,8 +3,29 @@ import { AppRegistry, Alert, View, BackHandler, Text, Imageview, KeyboardAvoidin
 import LinearGradient from 'react-native-linear-gradient';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Input } from 'react-native-elements';
+import { Thumbnail } from 'native-base';
+import Firebase from '../Firebase/Firebase';
 
 class Forgot extends React.Component {
+
+    constructor(props)
+    {
+        super(props);
+        this.state={
+            email:''
+        }
+    };
+
+    onResetPasswordPress = () => {
+        Firebase.auth().sendPasswordResetEmail(this.state.email)
+            .then(() => {
+                this.props.navigation.navigate('Login')
+                Alert.alert("Password reset email has been sent.");
+            }, (error) => {
+                Alert.alert(error.message);
+            });
+    }
+
     render() {
         const {navigate}=this.props.navigation;
         return (
@@ -24,11 +45,13 @@ class Forgot extends React.Component {
                         style={{ height: hp(12), width: hp(12) }}
                         placeholder='Email'
                         placeholderTextColor='#70DBDB'
+                        value={this.state.email}
+                        onChangeText={email=>this.setState({email})}
 
                     />
 
                     <TouchableOpacity
-                    onPress={()=>navigate('Login')}
+                    onPress={this.onResetPasswordPress}
                     >
                         <View style={{ height: hp(7), width: wp(70), borderRadius: hp('8'), backgroundColor: "#70DBDB", marginLeft: hp(6), marginTop: hp(4) }}>
                             <Text style={{ marginLeft: hp(17), marginTop: hp(2), fontFamily: 'AsapCondensed-Italic', fontSize: 16, color: '#001a33' }}>Submit</Text>

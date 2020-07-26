@@ -7,6 +7,8 @@ import Delete from  '../controluser/Delete';
 import Chat from '../chat/Chat';
 import Initial from '../screen/Initial';
 import SplashScreen from '../screen/SplashScreen';
+import Dashboard from '../screen/Dashboard/Dashboard';
+import BottomNavi from '../screen/Dashboard/BottomNavi';
 import { createAppContainer, } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 // import { NavigationContainer } from '@react-navigation/native';
@@ -22,14 +24,18 @@ const RootStack = createStackNavigator(
         Delete
         ,Chat,
         Initial,
-        SplashScreen
+        SplashScreen,
+        Dashboard,
+        BottomNavi
 
       
     },
     {
       initialRouteName: 'SplashScreen',
       defaultNavigationOptions: {
-        header: null
+        header: null,
+        gesturesEnabled:false,
+        headerLeft:null
     }
     }
   );
